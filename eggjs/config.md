@@ -7,13 +7,13 @@ Egg provides powerful and extensible feature that automatically merge configurat
 配置的管理有多种方案，以下列一些常见的方案
 Several optionals for the config management as shown below,
 
-1. 使用平台管理配置，应用构建时将当前环境的配置放入包内，启动时指定该配置。但应用就无法一次构建多次部署，而且本地开发环境想使用配置会变的很麻烦。Platform to config, config file will be specified at startup and pass through the current environment when building it. But it cannot once build multiple deployment, and it will become more complex when using in local development environment.
-1. 使用平台管理配置，在启动时将当前环境的配置通过环境变量传入，这是比较优雅的方式，但框架对运维的要求会比较高，需要部署平台支持，同时开发环境也有相同痛点。Platform to config，config file will pass throught as environment variables to the current environmentat when started. It is more elegant but the maintenance requirements will be higher and platform support will be needed. Using it in the local development environment also complex.
+1. 使用平台管理配置，应用构建时将当前环境的配置放入包内，启动时指定该配置。但应用就无法一次构建多次部署，而且本地开发环境想使用配置会变的很麻烦。Platform to config, config file will be specified at startup and pass through the current environment when building it. But it cannot once build multiple deployment, and more complex when using in local development environment.
+1. 使用平台管理配置，在启动时将当前环境的配置通过环境变量传入，这是比较优雅的方式，但框架对运维的要求会比较高，需要部署平台支持，同时开发环境也有相同痛点。Platform to config，config file will pass throught as environment variables to the current environmentat when started. It is more elegant but the maintenance requirements will be higher and platform support will be needed, also complext using in the local development environment.
 1. 使用代码管理配置，在代码中添加多个环境的配置，在启动时传入当前环境的参数即可。但无法全局配置，必须修改代码。Code to config，add multiple environment configs in code and pass throught as environment parameters to the current environmentat when it starts. But it cannot config globally unless modify the code
 
 我们选择了最后一种配置方案，**配置即代码**，配置的变更也应该经过 review 后才能发布。应用包本身是可以部署在多个环境的，只需要指定运行环境即可。
 Last option is preferred,  also call it **Config as code**. Changing configuration should be reviewed before release, and the package can be deployed in multiple environment with specified the operation parameter.
-### 多环境配置 Multi-environment configuration
+### 多环境配置 Multi-Environment Configuration
 
 框架支持根据环境来加载配置，定义多个环境的配置文件，具体环境请查看[运行环境配置](./env.md)
 Support loading and defining of multiple configurations according to the environments. For specific environment, refer to [operating environment configuration](./env.md)
@@ -90,7 +90,7 @@ For example, in the prod environment to load a configuration of the loading orde
 **注意：插件之间也会有加载顺序，但大致顺序类似，具体逻辑可[查看加载器](../advanced/loader.md)。** 
 **Note: There are loading sequences between plugins, but similar to above, details can be viewed [loader](../advanced/loader.md).**
 
-### 合并规则Merge rule
+### 合并规则Merge Rules
 
 配置的合并使用 [extend2] 模块进行深度拷贝，[extend2] fork 自 [extend]，处理数组时会存在差异。
 Configure the merge using the [extend2] module for deep copy, [extend2] fork from [extend], a little differences when processing the array.
@@ -137,7 +137,7 @@ module.exports = {
 };
 ```
 
-### 引入插件 Require plugins
+### 引入插件 Require Plugins
 
 框架默认内置了企业级应用常用的[一部分插件](https://github.com/eggjs/egg/blob/master/config/plugin.js)。
 Default built-in some common enterprise [application plugins](https://github.com/eggjs/egg/blob/master/config/plugin.js).
